@@ -1,0 +1,20 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-family: 'Roboto', sans-serif;
+    width: 100vw;
+    line-height: 1.5rem;
+}
+
+body,html {
+    padding: 0;
+    margin:0;
+    overflow-x: hidden;
+}
