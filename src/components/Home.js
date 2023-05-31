@@ -57,7 +57,7 @@ export default () => {
     return (
         <div>
             <Header />
-            <div>
+            <div id="home-content">
                 <div>
                     <input 
                         placeholder='Search for a country ...'
@@ -78,10 +78,13 @@ export default () => {
                     <option value='Europe'>Europe</option>
                     <option value='Oceania'>Oceania</option>
                 </select>
+
+                <div>
+                    {countries.map(country=>(<HomeCard key={country.name.official} details={country} />))}
+                </div>
             </div>
 
-
-            {countries.map(country=>(<HomeCard key={country.name.official} details={country} />))}
+            
         </div>
     )
 }
