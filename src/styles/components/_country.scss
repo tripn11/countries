@@ -1,4 +1,5 @@
 #country {
+    min-height: 100vh;
 
     >button {
         padding: 0.3rem 2rem;
@@ -22,6 +23,16 @@
     .message {
         width: fit-content;
         margin: 5rem auto;
+    }
+}
+
+#country.dark {
+    background-color: $Dark-Dark-Blue;
+    color: white;
+    > button {
+        background-color: $Dark-Blue;
+        color: white;
+        box-shadow: 0.0rem 0.0rem 0.3rem $Dark-Blue;
     }
 }
 
@@ -55,16 +66,76 @@
             font-weight: 900;
         }
 
-        span.border {
-            font-weight: 600;
-            background-color: $Light-Gray;
-            padding: 0.1rem 1.3rem;
-            margin: 0 0.5rem;
-            box-shadow: 0.0rem 0.0rem 0.3rem $Dark-Gray;
+        >div:last-child {
+            grid-column: 1/3;
+            
+            ul {
+                list-style-type: none;
+                display: inline-flex;
+                flex-wrap: wrap;
+    
+                li {
+                    font-weight: 600;
+                    background-color: $Light-Gray;
+                    padding: 0.1rem 1.3rem;
+                    margin: 0 0.5rem;
+                    box-shadow: 0.0rem 0.0rem 0.3rem $Dark-Gray;
+                    margin-bottom: 0.5rem;
+                }
+               }
+        }
+    }
+}
+
+#country-details.dark {
+    color: white;
+
+    >div:last-child > div:last-child ul li {
+        background-color: $Dark-Blue;
+        box-shadow: 0.05rem 0.05rem 0.3rem $Dark-Blue;
+    }
+}
+
+/*--------------------------------------
+Mobile--------------------------------
+--------------------------------------*/
+
+@media only screen and (max-width:450px) {
+    #country {
+        min-height: 100vh;
+
+        > button {
+            margin-left: 0.5rem;
+        }
+    }
+
+    #country-details {
+        margin-left: 0.5rem;
+        display: block;
+        
+        >div:first-child {
+            margin: 0 auto;
         }
 
         >div:last-child {
-            grid-column: 1/3;
+            padding: 0;
+            display: block;
+            width: 85%;
+            margin: 2rem auto;
+
+            h3 {
+                padding-bottom: 2rem;
+            }
+
+            >div:nth-of-type(2) {
+                padding: 2rem 0;
+            }
+
+            > div:last-child {
+                span:first-child {
+                    display: block;
+                }
+            }
         }
     }
 }

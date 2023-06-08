@@ -7,8 +7,8 @@ export default () => {
     const { country } = useParams();
     const[details, setDetails] = useState('loading')
     const[borders, setBorders] =  useState([]);
+    const[mode, setMode] =  useState('');
     const navigate = useNavigate();
-
 
     useEffect(() => {
         fetch(`https://restcountries.com/v3.1/name/${country}`)
@@ -38,18 +38,32 @@ export default () => {
             })
     }, [])
 
+    // const modeSetter = () => {
+    //     if(localStorage.getItem('mode') === 'dark') {
+    //         setMode('dark')
+    //     }else {
+    //         setMode('');
+    //     }
+    // }
+
+    // setInterval(modeSetter, 1000);
+
+    const updater = (data) => {
+        setMode(data);
+    }
+
     const goHome = () => {
         navigate('/');
     }
 
     return (
-        <div id='country'>
-            <Header />
+        <div id='country' className={mode}>
+            <Header transmitter={updater} />
             <button onClick={goHome}><ion-icon name="arrow-back-outline"></ion-icon><span>Back</span></button>
             {details=== null && <div className='message'>Could not find this country</div>}
             {details ==='loading' && <div className='message'>Loading...</div>}
             {details !== null && details !== 'loading' && 
-                <div id='country-details'>
+                <div id='country-details' className={mode}>
                     <div>
                         <img src={details.flags.png} />
                     </div>
@@ -69,7 +83,7 @@ export default () => {
                             <p><span>Languages:</span>{Object.keys(details.languages).map(key=>details.languages[key]).join(",")}</p>
                         </div>
                         <div>
-                            <p><span>Border Countries:</span>{borders.map(each => <span key={each} className='border'>{each}</span>)}</p>
+                            <p><span>Border Countries:</span><ul>{borders.map(each => <li key={each}>{each}</li>)}</ul></p>
                         </div>
                     </div>
                 </div>}

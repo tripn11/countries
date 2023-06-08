@@ -40,3 +40,19 @@
         }
     }
 }
+
+#home-card.dark {
+    background-color: $Dark-Blue;
+    box-shadow: 0.0rem 0.0rem 0.3rem $Dark-Blue;
+}
+
+/*--------------------------------------
+Mobile --------------------------------
+--------------------------------------*/
+
+@media only screen and (max-width:450px) {
+    #home-card {
+        width: 60%;
+        margin: 2rem auto;
+    }
+}

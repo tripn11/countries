@@ -24,14 +24,36 @@
             width: 100%;
             justify-content: center;
 
-            >:first-child {
+            >*:first-child {
                 padding: 0.3rem 0.5rem 0 0;
                 font-size: 0.75rem;
             }
+
+            >*:last-child {
+                cursor: pointer;
+            }
         }
 
-        >div:last-child {
+        >div.inactive {
             display: none;
         }
+    }
+}
+
+#header.dark {
+    background-color: $Dark-Blue;
+    color: white;
+    box-shadow: 0 0 0 0 $Dark-Blue;
+    margin-bottom: 0;
+}
+
+/*--------------------------------------
+Mobile--------------------------------
+--------------------------------------*/
+
+@media only screen and (max-width:450px) {
+    #header {
+        padding:0.2rem 0.5rem;
+        background-color: white;
     }
 }

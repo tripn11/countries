@@ -2,7 +2,7 @@ import React from 'react';
 import numeral from 'numeral';
 
 export default (props) => (
-    <div id="home-card">
+    <div id="home-card" className={props.mode}>
         <div>
             <img src={props.details.flags.png} />
         </div>

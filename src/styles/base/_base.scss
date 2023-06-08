@@ -18,3 +18,23 @@ body,html {
     margin:0;
     overflow-x: hidden;
 }
+
+html {
+    font-size: 1vw;
+}
+
+
+
+/*--------------------------------------
+Mobile--------------------------------
+--------------------------------------*/
+
+@media only screen and (max-width:450px) {
+    html {
+        font-size: 3vw;
+    }
+
+    body {
+        background-color: $Light-Gray;
+    }
+}

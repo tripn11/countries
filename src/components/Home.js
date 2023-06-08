@@ -7,7 +7,9 @@ export default () => {
     const navigate = useNavigate();
     const[countries, setCountries] = useState([]);
     const[searched, setSearched] = useState('');
-    const[region, setRegion] = useState("")
+    const[region, setRegion] = useState("");
+    const[mode, setMode] = useState('');
+
 
     useEffect(()=>{
         if(region === "") {
@@ -39,6 +41,7 @@ export default () => {
                 })
             .catch(error=>console.log(error))
         }
+
     }, [region])
 
     const setCountry = (e) => {
@@ -53,16 +56,26 @@ export default () => {
         setRegion(e.target.value)
     }
 
+    const updater = (data) => {
+        setMode(data);
+    }
+
+    const findCountryPro = (e) => {
+        if(e.key === 'Enter') {
+            findCountry();
+        } 
+    }
 
     return (
         <div>
-            <Header />
-            <div id="home-content">
+            <Header transmitter = {updater} />
+            <div id="home-content" className={mode}>
                 <div>
                     <input 
                         placeholder='Search for a country ...'
                         value={searched}
-                        onChange={setCountry} 
+                        onChange={setCountry}
+                        onKeyUp={findCountryPro} 
                     />
                     <span onClick={findCountry}><ion-icon name="search-outline"></ion-icon></span>
                 </div>
@@ -80,7 +93,7 @@ export default () => {
                 </select>
 
                 <div>
-                    {countries.map(country=>(<HomeCard key={country.name.official} details={country} />))}
+                    {countries.map(country=>(<HomeCard key={country.name.official} details={country} mode={mode} />))}
                 </div>
             </div>
 
